@@ -19,58 +19,32 @@
       color: inherit !important;
     }
 
-    /* Skip link prototype overrides */
-    .qld__skip-links-container {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
+    /* Make header relative so skip link absolute positioning is relative to it */
+    .qld__header {
+      position: relative;
     }
 
-    .qld__skip-links-container:focus-within {
-      position: static;
-      display: block;
-      width: auto;
-      height: auto;
-      clip: auto;
-      margin: 0;
-      padding: 1rem 0;
-      background-color: #f5f5f5;
-      text-align: left;
-    }
-
-    .qld__skip-links-container .qld__skip-link__link {
-      position: static;
-      width: auto;
-      height: auto;
-      clip: auto;
-      margin: 0;
-      margin-right: 1rem;
-      padding: 0;
-      background-color: transparent;
-      border: 0;
-      display: inline;
-      text-decoration-thickness: var(--QLD-underline__thickness-thin) !important;
-    }
-
-
-    a.qld__skip-link__link:visited,
-    a.qld__skip-link__link:visited:hover {
-      color: var(--QLD-color-light__link);
-      text-decoration-color: var(--QLD-color-light__link);
-    }
-
-    a.qld__skip-link__link:hover {
-      text-decoration-thickness: var(--QLD-underline__thickness-thick) !important;
-      text-decoration-color: var(--QLD-color-light__link) !important;
-    }
-
-    a.qld__skip-link__link:focus {
-      outline-offset: 4px !important;
+    /* Floating Skip Link Styles (Override Default) */
+    .qld__skip-link__link:focus {
+      position: absolute !important;
+      top: 8px !important;
+      left: 8px !important;
+      padding: 0.75rem !important;
+      font-size: 16px !important;
+      border-radius: 4px !important;
+      background-color: #ffffff !important;
+      color: var(--QLD-color-light__link, #00508f) !important;
+      text-decoration: underline !important;
+      text-decoration-thickness: 1px !important;
+      text-decoration-color: var(--QLD-color-light__link, #00508f) !important;
+      z-index: 9999 !important;
+      width: auto !important;
+      height: auto !important;
+      clip: auto !important;
+      margin: 0 !important;
+      outline: #002b54;
+      outline-offset: -5px !important;
+      box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.20), 0 0 0 2px #FFF inset;
     }
 
     @media (max-width: 991px) {
@@ -176,19 +150,18 @@
     </div>
   </div>
 
-  <div class="qld__skip-links-container">
-    <div class="container-fluid" style="padding-left: 2rem; padding-right: 2rem;">
+  <header class="qld__header" role="banner">
+
+    <nav class="qld__skip-link" aria-label="skip links" tabindex="-1">
       <a class="qld__skip-link__link" href="#content">Skip to main content</a>
-      <a class="qld__skip-link__link qld__skip-link__link-desktop" href="#mainmenu">
+      <a class="qld__skip-link__link qld__skip-link__link-desktop" href="#main-nav">
         Skip to main navigation
       </a>
       <a class="qld__skip-link__link qld__skip-link__link-mobile" href="#main-nav-mobile">
         Skip to main navigation
       </a>
-    </div>
-  </div>
+    </nav>
 
-  <header class="qld__header" role="banner">
     <div class="qld__header__pre-header qld__header__pre-header--dark ">
       <div class="container-fluid">
         <a href="https://www.qld.gov.au">
@@ -267,7 +240,7 @@
                 Skip link prototype
               </span>
               <span class="qld__header__subline">
-                Inline block element
+                Floating element
               </span>
             </div>
           </a>
@@ -614,14 +587,14 @@
               <!--@@ Heading(s) @@-->
               <h1 class="qld__banner__heading__wrapper">
                 <span class="qld__banner__heading qld__banner__heading--dark">
-                  Inline block skip link example
+                  Floating skip link example
                 </span>
 
               </h1>
 
               <!--@@ Abstract @@-->
               <div class="qld__banner__content--body qld__abstract">
-                Main rationale is that it doesn't obscure content
+                Main rationale is that it doesn't shift the layout
               </div>
 
               <!--@@ CTA Buttons @@-->
