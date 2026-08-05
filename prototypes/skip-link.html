@@ -14,9 +14,19 @@
       padding: 0;
     }
 
+    /* Change QLD gov logo colour to #005eb8 */
+    .qld__header__brand-image {
+      color: #005eb8 !important;
+    }
+
     /* Prevent global alert link colors from changing on hover */
     .qld__global-alert a:hover {
       color: inherit !important;
+    }
+
+    .qld__abstract a:visited {
+      color: inherit !important;
+      text-decoration-color: inherit !important;
     }
 
     /* Skip link prototype overrides */
@@ -56,7 +66,6 @@
       display: inline;
       text-decoration-thickness: var(--QLD-underline__thickness-thin) !important;
     }
-
 
     a.qld__skip-link__link:visited,
     a.qld__skip-link__link:visited:hover {
@@ -193,10 +202,10 @@
       <div class="container-fluid">
         <a href="https://www.qld.gov.au">
           <span class="qld__header__pre-header-url">
-            Queensland Government
+            qld.gov.au
           </span>
           <img class="qld__header__pre-header-brand-image" alt="Queensland Government logo"
-            src="../dist/mysource_files/img/CoA-Black-Mobile.svg">
+            src="../dist/mysource_files/img/header-logo-qgov--light.svg">
 
         </a>
 
@@ -438,12 +447,12 @@
                       qld__main-nav__item-link
                           qld__main-nav__item-link--desktop-hide
                     " href="20">
-                    Conditions &amp; treatments
+                    Conditions and treatments
                   </a>
                   <button class="qld__main-nav__item-toggle qld__accordion--closed" aria-controls="mega-nav-20"
-                    aria-expanded="false" aria-label="Toggle navigation, Conditions &amp; treatments">
-                    <span class="qld__main-nav__item-toggle-text" data-name="Conditions &amp; treatments">Conditions
-                      &amp; treatments</span>
+                    aria-expanded="false" aria-label="Toggle navigation, Conditions and treatments">
+                    <span class="qld__main-nav__item-toggle-text" data-name="Conditions and treatments">Conditions
+                      and treatments</span>
                     <svg class="qld__icon qld__icon--xs" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                       <use href="../dist/mysource_files/img/QLD-icons.svg#chevron-up"></use>
                     </svg>
@@ -454,7 +463,7 @@
                   <div class="qld__main-nav__menu-sub-inner">
                     <div class="qld__main-nav__sub-head">
                       <a class="qld__main-nav__sub-heading " href="20">
-                        <span class="qld__main-nav__sub-item-text qld__display-lg">Conditions &amp; treatments</span>
+                        <span class="qld__main-nav__sub-item-text qld__display-lg">Conditions and treatments</span>
                         <svg class="qld__icon qld__icon--lg" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
                           <use href="../dist/mysource_files/img/QLD-icons.svg#arrow-right"></use>
                         </svg>
@@ -469,7 +478,7 @@
                       <li class="">
                         <a href="#">
                           <span class="qld__main-nav__sub-item-text">
-                            Conditions &amp; treatments
+                            Conditions and treatments
                           </span>
                         </a>
                       </li>
@@ -621,7 +630,9 @@
 
               <!--@@ Abstract @@-->
               <div class="qld__banner__content--body qld__abstract">
-                Main rationale is that it doesn't obscure content
+                Pro: It doesn't obscure content beneath at all.<br>
+                Con: It shifts the layout.
+                <p><a href="skip-link-floating.html">Switch to floating example</a></p>
               </div>
 
               <!--@@ CTA Buttons @@-->
