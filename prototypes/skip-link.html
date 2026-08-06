@@ -60,7 +60,6 @@
       height: auto;
       clip: auto;
       margin: 0;
-      margin-right: 1rem;
       padding: 0;
       background-color: transparent;
       border: 0;
@@ -84,6 +83,32 @@
       outline-offset: 4px !important;
       outline: 3px solid var(--QLD-color-light__focus, #0094ff) !important;
       border-radius: 4px;
+    }
+
+    .qld__skip-links-container .container-fluid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .qld__skip-links-container .container-fluid::before,
+    .qld__skip-links-container .container-fluid::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    @media (max-width: 699px) {
+      .qld__skip-links-container .container-fluid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+
+    @media (min-width: 699px) {
+      .qld__skip-links-container .container-fluid {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
     }
 
     @media (max-width: 991px) {
@@ -190,7 +215,7 @@
   </div>
 
   <div class="qld__skip-links-container">
-    <div class="container-fluid" style="padding-left: 2rem; padding-right: 2rem;">
+    <div class="container-fluid">
       <a class="qld__skip-link__link" href="#content">Skip to main content</a>
       <a class="qld__skip-link__link qld__skip-link__link-desktop" href="#mainmenu">
         Skip to main navigation
@@ -280,7 +305,7 @@
                 Skip link prototype
               </span>
               <span class="qld__header__subline">
-                Inline block element
+                Block element
               </span>
             </div>
           </a>
@@ -627,7 +652,7 @@
               <!--@@ Heading(s) @@-->
               <h1 class="qld__banner__heading__wrapper">
                 <span class="qld__banner__heading qld__banner__heading--dark">
-                  Inline block skip link example
+                  Block skip link example
                 </span>
 
               </h1>
