@@ -81,7 +81,7 @@
     a.qld__skip-link__link:focus,
     a.qld__skip-link__link.mock-focus {
       outline-offset: 4px !important;
-      outline: 3px solid var(--QLD-color-light__focus, #0094ff) !important;
+      outline: 3px solid var(--QLD-color-light__focus) !important;
       border-radius: 4px;
     }
 
@@ -139,7 +139,7 @@
           </div>
           <div class="qld__global-alert__content">
             <div class="qld__global-alert__message">
-              Check your measles exposure risk if you recently visited Brisbane International Airport or Queensland
+              Measles alert for the Brisbane International Airport and Queensland
               Children's Hospital.
               <a href="#">Read the measles health alert</a>.
             </div>
@@ -678,7 +678,18 @@
     <section class="qld__body">
       <div class="container-fluid">
         <h2 style="margin-bottom: 24px;">Options</h2>
-        <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-alerts">
+
+        <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-skip-links">
+          <legend id="qld__checkboxes-legend-skip-links" style="margin-bottom: 8px">Toggle visibility of skip links
+          </legend>
+          <div class="qld__control-input">
+            <input type="checkbox" id="toggle-skip-links" name="qld__checkbox-skip-links">
+            <label for="toggle-skip-links" style="display: inline-block;">Show skip links</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-alerts"
+          style="margin-top: 24px;">
           <legend id="qld__checkboxes-legend-alerts" style="margin-bottom: 8px">Toggle visibility of global alert/s
           </legend>
           <div class="qld__control-input">
@@ -696,15 +707,7 @@
           </div>
         </fieldset>
 
-        <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-skip-links"
-          style="margin-top: 24px;">
-          <legend id="qld__checkboxes-legend-skip-links" style="margin-bottom: 8px">Toggle visibility of skip links
-          </legend>
-          <div class="qld__control-input">
-            <input type="checkbox" id="toggle-skip-links" name="qld__checkbox-skip-links">
-            <label for="toggle-skip-links" style="display: inline-block;">Show skip links</label>
-          </div>
-        </fieldset>
+
 
       </div>
     </section>
