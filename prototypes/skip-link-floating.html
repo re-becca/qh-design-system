@@ -24,7 +24,8 @@
       color: inherit !important;
     }
 
-    .qld__abstract a:visited {
+    .qld__abstract a:visited,
+    .qld__skip-link__link:visited {
       color: inherit !important;
       text-decoration-color: inherit !important;
     }
@@ -35,7 +36,8 @@
     }
 
     /* Floating Skip Link Styles (Override Default) */
-    .qld__skip-link__link:focus {
+    .qld__skip-link__link:focus,
+    .qld__skip-link__link.mock-focus {
       position: absolute !important;
       top: 8px !important;
       left: 8px !important;
@@ -44,15 +46,12 @@
       border-radius: 4px !important;
       background-color: #ffffff !important;
       color: var(--QLD-color-light__link, #00508f) !important;
-      text-decoration: underline !important;
-      text-decoration-thickness: 1px !important;
-      text-decoration-color: var(--QLD-color-light__link, #00508f) !important;
       z-index: 9999 !important;
       width: auto !important;
       height: auto !important;
       clip: auto !important;
       margin: 0 !important;
-      outline: #002b54;
+      outline: 3px solid #002b54 !important;
       outline-offset: -5px !important;
       box-shadow: 0 1px 3px 1px rgba(0, 0, 0, 0.10), 0 1px 2px 0 rgba(0, 0, 0, 0.20), 0 0 0 2px #FFF inset;
     }
@@ -641,6 +640,16 @@
           </div>
         </fieldset>
 
+        <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-skip-links"
+          style="margin-top: 24px;">
+          <legend id="qld__checkboxes-legend-skip-links" style="margin-bottom: 8px">Toggle visibility of skip links
+          </legend>
+          <div class="qld__control-input">
+            <input type="checkbox" id="toggle-skip-links" name="qld__checkbox-skip-links">
+            <label for="toggle-skip-links" style="display: inline-block;">Show skip links</label>
+          </div>
+        </fieldset>
+
       </div>
     </section>
     <script>
@@ -695,6 +704,21 @@
             }
           });
         });
+
+        // Toggle skip links
+        var skipLinkCheckbox = document.getElementById("toggle-skip-links");
+        if (skipLinkCheckbox) {
+          skipLinkCheckbox.addEventListener("change", function () {
+            var firstLink = document.querySelector('.qld__skip-link__link');
+            if (this.checked) {
+              document.body.classList.add("show-skip-links");
+              if (firstLink) firstLink.classList.add("mock-focus");
+            } else {
+              document.body.classList.remove("show-skip-links");
+              if (firstLink) firstLink.classList.remove("mock-focus");
+            }
+          });
+        }
       });
     </script>
 

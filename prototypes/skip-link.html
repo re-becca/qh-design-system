@@ -41,7 +41,8 @@
       border: 0;
     }
 
-    .qld__skip-links-container:focus-within {
+    .qld__skip-links-container:focus-within,
+    body.show-skip-links .qld__skip-links-container {
       position: static;
       display: block;
       width: auto;
@@ -63,7 +64,7 @@
       padding: 0;
       background-color: transparent;
       border: 0;
-      display: inline;
+      display: inline-block;
       text-decoration-thickness: var(--QLD-underline__thickness-thin) !important;
     }
 
@@ -78,8 +79,11 @@
       text-decoration-color: var(--QLD-color-light__link) !important;
     }
 
-    a.qld__skip-link__link:focus {
+    a.qld__skip-link__link:focus,
+    a.qld__skip-link__link.mock-focus {
       outline-offset: 4px !important;
+      outline: 3px solid var(--QLD-color-light__focus, #0094ff) !important;
+      border-radius: 4px;
     }
 
     @media (max-width: 991px) {
@@ -630,7 +634,7 @@
 
               <!--@@ Abstract @@-->
               <div class="qld__banner__content--body qld__abstract">
-                Pro: It doesn't obscure content beneath at all.<br>
+                Pro: It doesn't obscure content beneath.<br>
                 Con: It shifts the layout.
                 <p><a href="skip-link-floating.html">Switch to floating example</a></p>
               </div>
@@ -664,6 +668,16 @@
             <input type="checkbox" id="toggle-alert-information" data-target="alert-information"
               name="qld__checkbox-alerts">
             <label for="toggle-alert-information" style="display: inline-block;">Information</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-skip-links"
+          style="margin-top: 24px;">
+          <legend id="qld__checkboxes-legend-skip-links" style="margin-bottom: 8px">Toggle visibility of skip links
+          </legend>
+          <div class="qld__control-input">
+            <input type="checkbox" id="toggle-skip-links" name="qld__checkbox-skip-links">
+            <label for="toggle-skip-links" style="display: inline-block;">Show skip links</label>
           </div>
         </fieldset>
 
@@ -721,6 +735,21 @@
             }
           });
         });
+
+        // Toggle skip links
+        var skipLinkCheckbox = document.getElementById("toggle-skip-links");
+        if (skipLinkCheckbox) {
+          skipLinkCheckbox.addEventListener("change", function () {
+            var firstLink = document.querySelector('.qld__skip-link__link');
+            if (this.checked) {
+              document.body.classList.add("show-skip-links");
+              if (firstLink) firstLink.classList.add("mock-focus");
+            } else {
+              document.body.classList.remove("show-skip-links");
+              if (firstLink) firstLink.classList.remove("mock-focus");
+            }
+          });
+        }
       });
     </script>
 
