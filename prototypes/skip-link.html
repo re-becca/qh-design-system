@@ -14,6 +14,11 @@
       padding: 0;
     }
 
+    .qld__header__pre-header {
+      /* Replaces the default spread shadow with a bottom-only shadow */
+      box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px -2px rgba(0, 0, 0, 0.1) !important;
+    }
+
     /* Change QLD gov logo colour to #005eb8 */
     .qld__header__brand-image {
       color: #005eb8 !important;
@@ -31,27 +36,37 @@
 
     /* Skip link prototype overrides */
     .qld__skip-links-container {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
+      display: block;
+      margin: 0;
+      text-align: left;
       overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      border: 0;
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      border-bottom: 0px solid var(--QLD-color-dark__border);
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        padding-top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        padding-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        border-bottom-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .qld__skip-links-container:focus-within,
     body.show-skip-links .qld__skip-links-container {
-      position: static;
-      display: block;
-      width: auto;
-      height: auto;
-      clip: auto;
-      margin: 0;
-      padding: 1rem 0;
-      background-color: #f5f5f5;
-      text-align: left;
+      max-height: 150px;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+      border-bottom-width: 1px;
+    }
+
+    .qld__skip-links-container .container-fluid {
+      opacity: 0;
+      transition: opacity 0s;
+    }
+
+    .qld__skip-links-container:focus-within .container-fluid,
+    body.show-skip-links .qld__skip-links-container .container-fluid {
+      opacity: 1;
+      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .qld__skip-links-container .qld__skip-link__link {
@@ -61,41 +76,14 @@
       clip: auto;
       margin: 0;
       padding: 0;
-      background-color: transparent;
-      border: 0;
       display: inline-block;
       text-decoration-thickness: var(--QLD-underline__thickness-thin) !important;
     }
 
-    a.qld__skip-link__link:visited,
-    a.qld__skip-link__link:visited:hover {
-      color: var(--QLD-color-light__link);
-      text-decoration-color: var(--QLD-color-light__link);
-    }
-
     a.qld__skip-link__link:hover {
       text-decoration-thickness: var(--QLD-underline__thickness-thick) !important;
-      text-decoration-color: var(--QLD-color-light__link) !important;
     }
 
-    a.qld__skip-link__link:focus,
-    a.qld__skip-link__link.mock-focus {
-      outline-offset: 4px !important;
-      outline: 3px solid var(--QLD-color-light__focus) !important;
-      border-radius: 4px;
-    }
-
-    .qld__skip-links-container .container-fluid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .qld__skip-links-container .container-fluid::before,
-    .qld__skip-links-container .container-fluid::after {
-      display: none !important;
-      content: none !important;
-    }
 
     @media (max-width: 699px) {
       .qld__skip-links-container .container-fluid {
@@ -111,17 +99,11 @@
       }
     }
 
-    @media (max-width: 991px) {
-      .qld__skip-link__link-desktop {
-        display: none !important;
+    /* @media (max-width: 991px) {
+      .qld__skip-links-container {
+        border-bottom: 1px solid var(--QLD-color-dark__border);
       }
-    }
-
-    @media (min-width: 992px) {
-      .qld__skip-link__link-mobile {
-        display: none !important;
-      }
-    }
+    } */
   </style>
 </head>
 
@@ -214,17 +196,11 @@
     </div>
   </div>
 
-  <div class="qld__skip-links-container">
+  <section class="qld__body qld__body--dark qld__skip-links-container">
     <div class="container-fluid">
       <a class="qld__skip-link__link" href="#content">Skip to main content</a>
-      <a class="qld__skip-link__link qld__skip-link__link-desktop" href="#mainmenu">
-        Skip to main navigation
-      </a>
-      <a class="qld__skip-link__link qld__skip-link__link-mobile" href="#main-nav-mobile">
-        Skip to main navigation
-      </a>
     </div>
-  </div>
+  </section>
 
   <header class="qld__header" role="banner">
     <div class="qld__header__pre-header qld__header__pre-header--dark ">
@@ -652,16 +628,14 @@
               <!--@@ Heading(s) @@-->
               <h1 class="qld__banner__heading__wrapper">
                 <span class="qld__banner__heading qld__banner__heading--dark">
-                  Block skip link example
+                  Skip link example
                 </span>
 
               </h1>
 
               <!--@@ Abstract @@-->
               <div class="qld__banner__content--body qld__abstract">
-                Pro: It doesn't obscure content beneath.<br>
-                Con: It shifts the layout.
-                <p><a href="skip-link-floating.html">Switch to floating example</a></p>
+                Block level element
               </div>
 
               <!--@@ CTA Buttons @@-->
