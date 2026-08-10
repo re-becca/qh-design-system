@@ -36,38 +36,27 @@
 
     /* Skip link prototype overrides */
     .qld__skip-links-container {
-      display: block;
-      margin: 0;
-      text-align: left;
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
       overflow: hidden;
-      max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
-      border-bottom: 0px solid var(--QLD-color-dark__border);
-      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        padding-top 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        padding-bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-        border-bottom-width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      border-bottom: 1px solid var(--QLD-color-dark__border);
     }
 
     .qld__skip-links-container:focus-within,
     body.show-skip-links .qld__skip-links-container {
-      max-height: 150px;
-      padding-top: 1.25rem;
-      padding-bottom: 1.25rem;
-      border-bottom-width: 1px;
+      position: static;
+      display: block;
+      width: auto;
+      height: auto;
+      clip: auto;
+      margin: 0;
+      padding: 1.25rem 0;
+      text-align: left;
     }
 
-    .qld__skip-links-container .container-fluid {
-      opacity: 0;
-      transition: opacity 0s;
-    }
 
-    .qld__skip-links-container:focus-within .container-fluid,
-    body.show-skip-links .qld__skip-links-container .container-fluid {
-      opacity: 1;
-      transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
 
     .qld__skip-links-container .qld__skip-link__link {
       position: static;
@@ -82,6 +71,12 @@
 
     a.qld__skip-link__link:hover {
       text-decoration-thickness: var(--QLD-underline__thickness-thick) !important;
+    }
+
+    a.qld__skip-link__link.mock-focus {
+      outline-offset: 4px !important;
+      outline: 3px solid var(--QLD-color-dark__focus) !important;
+      border-radius: 4px;
     }
 
 
@@ -654,17 +649,17 @@
         <h2 style="margin-bottom: 24px;">Options</h2>
 
         <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-skip-links">
-          <legend id="qld__checkboxes-legend-skip-links" style="margin-bottom: 8px">Toggle visibility of skip links
+          <legend id="qld__checkboxes-legend-skip-links" style="margin-bottom: 8px">Toggle visibility of skip link
           </legend>
           <div class="qld__control-input">
             <input type="checkbox" id="toggle-skip-links" name="qld__checkbox-skip-links">
-            <label for="toggle-skip-links" style="display: inline-block;">Show skip links</label>
+            <label for="toggle-skip-links" style="display: inline-block;">Skip link</label>
           </div>
         </fieldset>
 
         <fieldset class="qld__checkboxes" role="group" aria-labelledby="qld__checkboxes-legend-alerts"
           style="margin-top: 24px;">
-          <legend id="qld__checkboxes-legend-alerts" style="margin-bottom: 8px">Toggle visibility of global alert/s
+          <legend id="qld__checkboxes-legend-alerts" style="margin-bottom: 8px">Toggle visibility of global alerts
           </legend>
           <div class="qld__control-input">
             <input type="checkbox" id="toggle-alert-critical" data-target="alert-critical" name="qld__checkbox-alerts">
